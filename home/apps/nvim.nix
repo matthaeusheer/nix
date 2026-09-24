@@ -25,8 +25,6 @@
       settings = {
         "python.pythonPath" = ".venv/bin/python";
         "pyright.inlayHints.functionReturnTypes" = true;
-        "python.formatting.provider" = "black";
-        "python.formatting.blackPath" = "black";
       };
     };
 
@@ -224,7 +222,6 @@
       " Auto-install coc extensions
       let g:coc_global_extensions = [
         \ 'coc-pyright',
-        \ 'coc-terraform',
         \ 'coc-webview',
         \ 'coc-markdown-preview-enhanced',
         \ 'coc-yaml',

@@ -8,6 +8,9 @@
     ./apps/starship.nix
     ./apps/nvim.nix
     ./apps/podman.nix
+    ./apps/brave.nix
+    ./apps/wget.nix
+    ./apps/claude-code.nix
   ];
 
   home.username = "matt";

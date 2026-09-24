@@ -96,15 +96,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
- environment.systemPackages = with pkgs; [
-   neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-   wget
-   brave
-   claude-code
-   git
- ];
+  # User-facing packages live in home-manager (home/apps/) instead — this stays empty unless
+  # something is genuinely needed system-wide (e.g. for root, or before any user logs in).
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

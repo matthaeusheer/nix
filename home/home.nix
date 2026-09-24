@@ -7,6 +7,7 @@
     ./apps/kitty.nix
     ./apps/starship.nix
     ./apps/nvim.nix
+    ./apps/podman.nix
   ];
 
   home.username = "matt";

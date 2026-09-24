@@ -67,7 +67,9 @@
   users.users."matt" = {
     isNormalUser = true;
     description = "matt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    # podman: lets this user talk to the rootless podman socket (see virtualisation.podman below).
+    # As with docker's group, members can gain root access via it.
+    extraGroups = [ "networkmanager" "wheel" "podman" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
@@ -76,6 +78,17 @@
 
   # Registers zsh in /etc/shells, required for it to be a valid login shell above.
   programs.zsh.enable = true;
+
+  # Rootless, daemonless container engine. dockerCompat aliases `docker` -> `podman`;
+  # dockerSocket.enable exposes a Docker-API-compatible socket so tools like IntelliJ's
+  # Docker integration work unmodified. dns_enabled lets containers on the same
+  # compose/pod network resolve each other by service name.
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
   # Install firefox.
   programs.firefox.enable = true;
